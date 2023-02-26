@@ -15,12 +15,17 @@ pipeline {
       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
       }
     }
-    stage ('Static analysis') {
-      steps {
-        withSonarQubeEnv('sonar') {
-	  sh './sonarqube_report.sh'
-        }
-      }
-    }
   }
 }
+stage ('Software composition analysis') {
+            steps {
+                dependencyCheck additionalArguments: ''' 
+                    -o "./" 
+                    -s "./"
+                    -f "ALL" 
+                    --prettyPrint''', odcInstallation: 'OWASP-DC'
+
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+		    sh './dependency_check_report.sh'
+            }
+        }
