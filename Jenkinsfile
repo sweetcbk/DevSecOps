@@ -15,10 +15,10 @@ pipeline {
       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
       }
     }
-     stage ('Generate build') {
+  }
+}
+stage ('Generate build') {
       steps {
         sh 'mvn clean install -DskipTests'
       }
     }  
-  }
-}
