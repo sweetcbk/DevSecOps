@@ -21,7 +21,6 @@ pipeline {
       steps {
         withSonarQubeEnv('sonar') {
           sh 'mvn sonar:sonar'
-	  sh './sonarqube_report.sh'
         }
       }
     }
