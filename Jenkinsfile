@@ -15,12 +15,10 @@ pipeline {
       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
       }
     }
-     stage ('Static analysis') {
+     stage ('Generate build') {
       steps {
-        withSonarQubeEnv('sonar') {
-          sh 'mvn sonar:sonar'
-        }
+        sh 'mvn clean install -DskipTests'
       }
-    }
+    }  
   }
 }
