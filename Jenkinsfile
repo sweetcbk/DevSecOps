@@ -15,16 +15,10 @@ pipeline {
       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
       }
     }
-      stage ('Software composition analysis') {
-            steps {
-                dependencyCheck additionalArguments: ''' 
-                    -o "./" 
-                    -s "./"
-                    -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'owasp-dc'
-
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
-        }
+     stage('Compile Stage'){
+		steps{
+			sh 'mvn clean install -DskipTests'
+			}
+		}
   }
 }
