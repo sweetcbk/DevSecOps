@@ -17,9 +17,3 @@ pipeline {
     }
   }
 }
- stage ('Static analysis') {
-      steps {
-        withSonarQubeEnv('sonar') {
-        }
-      }
-    }
