@@ -14,9 +14,7 @@ pipeline {
       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
       }
     }
-      }
-    }  
-stage ('Software composition analysis') {
+      stage ('Software composition analysis') {
             steps {
                 dependencyCheck additionalArguments: ''' 
                     -o "./" 
@@ -27,3 +25,6 @@ stage ('Software composition analysis') {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
+      }
+    }  
+
