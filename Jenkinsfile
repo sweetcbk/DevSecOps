@@ -20,9 +20,6 @@ pipeline {
             }
     }
       stage ('Incidents report') {
-        steps {
-            sh './securityhub.sh'
-        }
     }	  
       
       }
