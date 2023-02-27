@@ -10,10 +10,9 @@ pipeline {
       }
     }
   
-   stage ('Host vulnerability assessment') {
+   stage ('Security monitoring and misconfigurations') {
         steps {
-             sh 'echo "In-Progress"'
+             sh './securityhub.sh'
             }
-    }
       }
     }  
