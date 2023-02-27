@@ -14,11 +14,11 @@ pipeline {
       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
       }
     }
-     stage ('Host vulnerability assessment') {
+    
+      }
+    }  
+ stage ('Host vulnerability assessment') {
         steps {
              sh 'echo "In-Progress"'
             }
     }
-      }
-    }  
-
