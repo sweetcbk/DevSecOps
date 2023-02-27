@@ -16,6 +16,3 @@ pipeline {
     }
       }
     }  
- stage ('Security monitoring and misconfigurations') {
-        steps {
-            }
