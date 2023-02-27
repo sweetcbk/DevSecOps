@@ -10,15 +10,10 @@ pipeline {
       }
     }
   
-    stage ('Check secrets') {
-      steps {
-      sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
-      }
+   stage ('Host vulnerability assessment') {
+        steps {
+             sh 'echo "In-Progress"'
+            }
     }
-  }
-}
-stage ('Generate build') {
-      steps {
-        sh 'mvn clean install -DskipTests'
       }
     }  
