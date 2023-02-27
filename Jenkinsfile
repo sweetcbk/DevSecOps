@@ -19,10 +19,11 @@ pipeline {
              sh 'echo "In-Progress"'
             }
     }
-      stage ('Security monitoring and misconfigurations') {
-        steps {
-            }
-    }
+      
       }
     }  
  
+stage ('Security monitoring and misconfigurations') {
+        steps {
+            }
+    }
