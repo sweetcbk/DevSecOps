@@ -25,11 +25,6 @@ pipeline {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
-      stage('Compile and Build'){
-		steps{
-			sh 'mvn clean install -DskipTests'
-			}
-		} 
      stage ('Host vulnerability assessment') {
         steps {
              sh 'echo "In-Progress"'
