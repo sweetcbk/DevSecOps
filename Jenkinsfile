@@ -25,7 +25,13 @@ pipeline {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
-   
+   stage ('Static Application Security Testing') {
+	      steps {
+        	withSonarQubeEnv('sonarqube') {
+	          sh 'mvn sonar:sonar'
+				}
+	      	}
+    	}
      stage ('Host vulnerability assessment') {
         steps {
              sh 'echo "In-Progress"'
