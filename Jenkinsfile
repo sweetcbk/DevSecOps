@@ -32,13 +32,7 @@ pipeline {
             }
     }
      
-   stage ('Static Application Security Testing') {
-	      steps {
-        	withSonarQubeEnv('sonarqube') {
-	          sh 'mvn sonar:sonar'
-				}
-	      	}
-    	}
+  
       }
     }  
 
