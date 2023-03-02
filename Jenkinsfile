@@ -31,13 +31,11 @@ pipeline {
              sh 'echo "In-Progress"'
             }
     }
-   stage ('Static analysis') {
+   stage ('Generate build') {
       steps {
-        withSonarQubeEnv('sonar') {
-          sh 'mvn sonar:sonar'
-        }
+        sh 'mvn clean install -DskipTests'
       }
-    }
+    }  
   
       }
     }  
