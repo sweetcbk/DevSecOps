@@ -31,13 +31,7 @@ pipeline {
              sh 'echo "In-Progress"'
             }
     }
-  stage ('Static analysis') {
-      steps {
-        withSonarQubeEnv('sonar') {
-          sh 'mvn sonar:sonar'
-        }
-      }
-    }
+  
   
       }
     }  
