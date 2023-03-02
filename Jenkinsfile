@@ -31,7 +31,11 @@ pipeline {
              sh 'echo "In-Progress"'
             }
     }
-  
+  stage ('Generate build') {
+      steps {
+        sh 'mvn clean install -DskipTests'
+      }
+    }  
   
       }
     }  
