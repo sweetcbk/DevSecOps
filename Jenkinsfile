@@ -31,12 +31,12 @@ pipeline {
              sh 'echo "In-Progress"'
             }
     }
-            }
-    }  
+   
   stage('Compile and Build'){
 		steps{
 			sh 'mvn clean install -DskipTests'
 			}
 		}
-  
+           }
+    }  
 
