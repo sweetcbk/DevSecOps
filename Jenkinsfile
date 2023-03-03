@@ -41,7 +41,7 @@ pipeline {
     	}
       stage('Compile and Build'){
 		steps{
-			sh 'mvn -B -C Install-DskipTests clean package'
+			sh 'mvn -B -C -DskipTests clean package'
 			}
 		}
            }
