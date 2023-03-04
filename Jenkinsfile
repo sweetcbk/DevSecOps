@@ -39,11 +39,12 @@ pipeline {
 				}
 	      	}
     	}
-    stage ('Generate build') {
+    
+           }
+    }  
+
+stage ('Generate build') {
       steps {
         sh 'mvn clean install -DskipTests'
       }
     } 
-           }
-    }  
-
