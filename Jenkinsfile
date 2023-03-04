@@ -39,11 +39,7 @@ pipeline {
 				}
 	      	}
     	}
-      stage('Compile and Build'){
-		steps{
-			sh 'mvn -B -C -DskipTests clean package'
-			}
-		}
+    
            }
     }  
 
