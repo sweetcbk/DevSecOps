@@ -40,6 +40,15 @@ pipeline {
 				}
 	      	}
     	}
+      
+      stage ('Deploy to server-application') {
+            steps {
+           sshagent(['server-application']) {
+                sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/target/webapps ubuntu@52.23.185.21:/WebGoat'
+    
+           }
+           }     
+    }
      
 
     
