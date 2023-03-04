@@ -45,7 +45,7 @@ pipeline {
             steps {
            sshagent(['server-application']) {
                 sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/target/ ubuntu@52.23.185.21:/WebGoat'
-               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@52.23.185.21 "sudo ./zap_report.sh"'
+               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@52.23.185.21 "nohup java -jar /WebGoat/webgoat-server-v8.2.0-SNAPSHOT.jar &"'
     
            }
            }     
