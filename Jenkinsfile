@@ -48,7 +48,7 @@ pipeline {
             steps {
            sshagent(['server-application']) {
                 sh 'ssh -o  StrictHostKeyChecking=no ubuntu@18.205.235.122 "sudo /opt/zaproxy/ ./zap.sh -cmd -quickurl http://54.147.56.117:8080/WebGoat -quickprogress -quickout ~/out.xml  || true" '
-		sh 'ssh -o  StrictHostKeyChecking=no ubuntu@18.205.235.122 "sudo cat ~/out.xml" '
+		sh 'ssh -o  StrictHostKeyChecking=no ubuntu@18.205.235.122 "sudo  ./out.xml" '
               }      
            }       
     }
