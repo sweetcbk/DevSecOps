@@ -10,30 +10,30 @@ pipeline {
             ''' 
       }
     }
-       stage ('Check secrets') {
-      steps {
-      sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
-      }
-    }
-     stage ('Software Composition Analysis') {
-            steps {
-                dependencyCheck additionalArguments: ''' 
-                    -o "./" 
-                    -s "./"
-                    -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'owasp-dc'
+//        stage ('Check secrets') {
+//       steps {
+//       sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
+//       }
+//     }
+//      stage ('Software Composition Analysis') {
+//             steps {
+//                 dependencyCheck additionalArguments: ''' 
+//                     -o "./" 
+//                     -s "./"
+//                     -f "ALL" 
+//                     --prettyPrint''', odcInstallation: 'owasp-dc'
 
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
-        }
+//                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+//             }
+//         }
    
- stage ('Static Application Security Testing') {
-	      steps {
-        	withSonarQubeEnv('SonarQubeScanner') {
-	          sh 'mvn sonar:sonar'
-				}
-	      	}
-    	}
+//  stage ('Static Application Security Testing') {
+// 	      steps {
+//         	withSonarQubeEnv('SonarQubeScanner') {
+// 	          sh 'mvn sonar:sonar'
+// 				}
+// 	      	}
+//     	}
       
       stage ('Deploy to server-application') {
             steps {
