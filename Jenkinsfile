@@ -27,11 +27,11 @@ pipeline {
              }
          }
    
- stage ('Static analysis') {
+stage ('Static analysis') {
       steps {
         withSonarQubeEnv('SonarQube') {
           sh 'mvn sonar:sonar'
-	}
+        }
       }
     }
       
