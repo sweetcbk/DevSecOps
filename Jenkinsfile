@@ -31,7 +31,7 @@ stage ('Static analysis') {
       steps {
         withSonarQubeEnv('SonarQube Scanner') {
           sh 'mvn sonar:sonar'
-            mvn clean package sonar:sonar'
+            
         }
       }
     }
