@@ -48,7 +48,7 @@ stage ('Static analysis') {
       stage ('Dynamic analysis') {
             steps {
            sshagent(['server-application']) {
-               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@54.173.19.17 "sudo ./zap.sh -cmd -quickurl http://54.197.2.27:8080/WebGoat -quickprogress -quickout ~/Aut.xml || true" '
+               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.226.212.189 "sudo ./zap.sh -cmd -quickurl http://54.197.2.27:8080/WebGoat -quickprogress -quickout ~/Aut.xml || true" '
            }      
            }       
     }
