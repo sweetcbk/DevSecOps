@@ -36,7 +36,7 @@ stage ('Static Analysis') {
       }
     }
       
-      stage ('Deploy to server-application') {
+      stage ('Deploy to Server Application') {
             steps {
            sshagent(['server-application']) {
               sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/webgoat-server-v8.2.0-SNAPSHOT.jar ubuntu@54.197.2.27:/WebGoat'
