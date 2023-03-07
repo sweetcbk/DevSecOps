@@ -10,7 +10,7 @@ pipeline {
             ''' 
       }
     }
-        stage ('Check secrets') {
+        stage ('Check Secrets') {
        steps {
        sh 'trufflehog3 https://github.com/sweetcbk/secirity.git -f json -o truffelhog_output.json || true'
        }
@@ -27,7 +27,7 @@ pipeline {
              }
          }
    
-stage ('Static analysis') {
+stage ('Static Analysis') {
       steps {
         withSonarQubeEnv('Sonar') {
           sh 'mvn sonar:sonar'
@@ -45,14 +45,14 @@ stage ('Static analysis') {
            }
            }     
         }
-      stage ('Dynamic analysis') {
+      stage ('Dynamic Analysis') {
             steps {
            sshagent(['server-application']) {
                sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.226.212.189 "sudo ./zap.sh -cmd -quickurl http://54.197.2.27:8080/WebGoat -quickprogress -quickout ~/Aut.xml || true" '
            }      
            }       
     }
-      stage ('Host vulnerability assessment') {
+      stage ('Host Vulnerability Assessment') {
        steps {
             sh 'echo "In-Progress"'
             }
