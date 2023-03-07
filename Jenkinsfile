@@ -29,7 +29,7 @@ pipeline {
    
 stage ('Static analysis') {
       steps {
-        withSonarQubeEnv('SonarQube Scanner') {
+        withSonarQubeEnv('Sonar') {
           sh 'mvn sonar:sonar'
             
         }
