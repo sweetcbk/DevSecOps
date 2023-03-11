@@ -49,6 +49,7 @@ stage ('Static Analysis') {
             steps {
            sshagent(['application_server']) {
                 sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.228.38.88 "sudo docker run --rm -v /home/ubuntu:/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py -t http://3.89.194.15:8080/WebGoat -x zap_report || true" '
+                sh 'ssh -o  StrictHostKeyChecking=no ubuntu@172.31.28.107 "sudo ./zap_report.sh"'
               }
            }
     }
