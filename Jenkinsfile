@@ -39,8 +39,8 @@ stage ('Static Analysis') {
       stage ('Deploy to Server Application') {
             steps {
            sshagent(['server-application']) {
-              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/webgoat-server-v8.2.0-SNAPSHOT.jar ubuntu@54.197.2.27:/WebGoat'
-             sh 'ssh -o  StrictHostKeyChecking=no ubuntu@54.197.2.27 "nohup java -jar webgoat-server-v8.2.0-SNAPSHOT.jar --server.address=0.0.0.0 --server.port=8080 &"'
+              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/webgoat-server-v8.2.0-SNAPSHOT.jar ubuntu@3.89.194.15:/WebGoat'
+             sh 'ssh -o  StrictHostKeyChecking=no ubuntu@3.89.194.15 "nohup java -jar webgoat-server-v8.2.0-SNAPSHOT.jar --server.address=0.0.0.0 --server.port=8080 &"'
     
            }
            }     
@@ -48,7 +48,7 @@ stage ('Static Analysis') {
       stage ('Dynamic Analysis') {
             steps {
            sshagent(['server-application']) {
-               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.226.212.189 "sudo ./zap.sh -cmd -quickurl http://54.197.2.27:8080/WebGoat -quickprogress -quickout ~/Aut.xml || true" '
+               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.228.38.88 "sudo ./zap.sh -cmd -quickurl http://3.89.194.15:8080/WebGoat -quickprogress -quickout ~/Aut.xml || true" '
            }      
            }       
     }
