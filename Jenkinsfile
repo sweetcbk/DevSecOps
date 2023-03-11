@@ -45,18 +45,14 @@ stage ('Static Analysis') {
            }
            }     
         }
-      stage ('Dynamic Analysis') {
+      stage ('Dynamic analysis') {
             steps {
-           sshagent(['server-application']) {
-               sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.228.38.88 "sudo ./zap.sh -cmd -quickurl http://3.89.194.15:8080/WebGoat -quickprogress -quickout ~/Aut.xml || true" '
-           }      
-           }       
+           sshagent(['application_server']) {
+                sh 'ssh -o  StrictHostKeyChecking=no ubuntu@34.228.38.88 "sudo docker run --rm -v /home/ubuntu:/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py -t http://3.89.194.15:8080/WebGoat -x zap_report || true" '
+              }
+           }
     }
-      stage ('Host Vulnerability Assessment') {
-       steps {
-            sh 'echo "In-Progress"'
-            }
-   }
+    
      
      }
     }  
